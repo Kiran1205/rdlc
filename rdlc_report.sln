@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rdlc_report", "rdlc_report\rdlc_report.csproj", "{C68148D9-A70C-4A3E-92DF-B5A7CFB7A3C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C68148D9-A70C-4A3E-92DF-B5A7CFB7A3C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C68148D9-A70C-4A3E-92DF-B5A7CFB7A3C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C68148D9-A70C-4A3E-92DF-B5A7CFB7A3C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C68148D9-A70C-4A3E-92DF-B5A7CFB7A3C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9334CE6B-613D-4403-8AB0-1FF453689432}
+	EndGlobalSection
+EndGlobal

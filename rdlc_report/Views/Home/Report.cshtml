@@ -1,0 +1,83 @@
+﻿@model rdlc_report.Models.ReportParam
+
+@{
+    ViewBag.Title = "Employee Report";
+}
+<h2>@ViewBag.Title.</h2>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[type=datetime]').datepicker({
+                dateFormat: "dd/M/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0"
+            });
+           
+            $('#btnSearch').click(function () {
+
+                var userid = $("#EmpListID").val();
+                var startdate = $("#StartDate").val();
+                var enddate = $("#endDate").val();
+                //ASPX page URL to load report
+                var src = '../ReportViewer.aspx?';
+                //We can add parameters here
+                src = src + "UserID=" + userid
+                src = src + "&startdate=" + startdate
+                src = src + "&enddate=" + enddate
+               
+               
+                //Create a dynamic iframe here and append this to div tag
+                var iframe = '<iframe id="reportFrame"  Width="100%" h src="' + src + '" allowfullscreen></iframe>';
+                $("#divReport").html(iframe);
+                var height = window.innerHeight - 300;
+                $("#reportFrame").height(height);
+            });
+
+        });
+        //function GeneratePDF() {
+        //    alert("test");
+        
+    </script>
+
+}
+
+@using (Html.BeginForm("GenerateReport", "Home"))
+{
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.EmpListID)
+                    <br />
+                    @Html.DropDownListFor(m => m.EmpListID, new SelectList(Model.EmployeesList.AsEnumerable(), "Id", "Name", -1), new { @class = "form-control", @id = "EmpListID" })
+                    @Html.HiddenFor(model => model.EmpName, new { @class = "form-control", @id = "Empname" })
+                    @Html.HiddenFor(m => m.EmployeesList, Model.EmployeesList)
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.StartDate)
+                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", @id = "StartDate" } })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.EndDate)
+                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", @id = "endDate" } })
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-raised btn-success btn-block">GeneratePDF</button>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" id="btnSearch" class="btn btn-raised btn-primary btn-block" >View Report</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div id="divReport"> </div>
+
+}
